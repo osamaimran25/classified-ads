@@ -1,0 +1,28 @@
+completed design login signup and signup with social media FB and google is enough user panel where they can see their ads which they have posted and perform CRUD on ads search bar for searching ads new ads feed posting an ad (in which dynamic form generation is required according to category ) A chat feature where two people can communicate (buyer and seller) pleas read above and let me know can you do it? all required in react all should be responsive
+
+
+1. fb and google
+2. they have posted and perform CRUD on ads search bar for searching ads new ads feed posting an ad (in which dynamic form generation is required according to category )
+
+3. A chat feature where two people can communicate (buyer and seller)
+
+
+
+
+
+
+1.single ads details: https://www.olx.in/item/ipad-pro-2nd-generation-wificellular-512-gb-129-inch-iid-1600975704
+
+
+
+https://www.facebook.com/settings ---- dashboard simple
+2.
+
+3.https://www.olx.in/ [home page]
+4. https://www.olx.in/nf/chat [chat]
+
+5. login page : https://i.imgur.com/4Xk5PUJ.png
+6. signUp : https://i.imgur.com/bAsg3Hf.png
+7. ads Post : https://www.olx.in/post
+
+8. https://www.olx.in/mobiles_c1411 [category]

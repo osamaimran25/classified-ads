@@ -1,0 +1,88 @@
+.red_text {
+  margin-top: 30px;
+  background-color: #ffd6c9;
+  border-top: 1px solid #aa133d;
+  border-bottom: 1px solid #aa133d;
+
+  .help_text {
+    display: flex;
+    justify-content: center;
+    p {
+      line-height: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #aa133d;
+    }
+  }
+}
+
+.link_text {
+  margin-top: 7px;
+  background-color: #cbf7ee;
+  border-top: 1px solid #1d3c81;
+  border-bottom: 1px solid #1d3c81;
+
+  .help_text {
+    display: flex;
+    justify-content: center;
+    a {
+      line-height: 30px;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #1d3c81;
+      text-align: center;
+    }
+  }
+}
+
+.hero_area {
+  background-image: url("../../assets/HelpCenter/background.svg");
+  background-position: center;
+  background-size: cover;
+  padding: 90px 0px !important;
+  padding: 0 20px;
+  text-align: center;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h1 {
+    padding: 20px 0px;
+    font-weight: bolder;
+    font-size: 40px;
+    color: #002f34;
+  }
+
+  .search_bar {
+    border: 3px solid #002f34;
+    width: 85%;
+    padding: 10px 0px;
+    margin: 0 auto;
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    img {
+      height: 20px;
+      width: 20px;
+    }
+
+    input {
+      background-color: transparent;
+      height: 25px;
+      width: 94%;
+      outline: none;
+      border-width: 0;
+
+      &:focus {
+        height: 25px;
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@mixin contentCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.TryIslamicAd_wrapper {
+  padding: 50px 0;
+  background-color: #f7f8f8;
+  .TryIslamicAd_image {
+  }
+  .TryIslamicAd_info {
+    @include contentCenter;
+    @media screen and (max-width: 599px) {
+      margin-top: 30px;
+    }
+    h4 {
+      font-weight: 700;
+      color: #002f34;
+    }
+    h6 {
+      margin-top: 20px;
+    }
+  }
+  .TryIslamicAd_get_app {
+    @include contentCenter;
+    @media screen and (max-width: 969px) {
+      margin-top: 30px;
+    }
+    h4 {
+      font-weight: 700;
+      color: #002f34;
+    }
+    .app_google {
+      display: flex;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      .app_img {
+      }
+      .google_img {
+        margin-left: 10px;
+        @media screen and (max-width: 1140px) {
+          margin-left: 2px !important;
+        }
+        @media screen and (max-width: 1118px) {
+          margin-left: 0 !important;
+        }
+        @media screen and (max-width: 1110px) {
+          // margin-top: 15px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,168 @@
+@mixin contentBackground {
+        max-width: 408px;
+        width: 100%;
+        border: 1px solid rgba(0,47,52,.2);
+        border-radius: 4px;
+        padding: 20px;
+        margin:10px
+  }
+.SellerInfo{
+
+    .SellerInfo--price{
+    @include  contentBackground;
+
+        .SellerInfo--price--content{
+            h2{
+                direction: ltr;
+                font-weight: 700;
+                margin-bottom: 8px;
+                color: #002f34;
+                font-size: 34px;
+                line-height: 32px;
+            }
+            p{
+                margin: 8px 0;
+                font-size: 16px;
+                color: #002f34;
+                font-weight: 400;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: 20px;
+            }
+            h6{
+                font-weight: 400;
+                margin: 0;
+                font-size: 16px;
+                color: rgba(0,47,52,.64);
+                line-height: 24px;
+                word-break: break-word;
+            }
+            .SellerInfo--price--content--icon{
+                display: flex;
+                justify-content: space-between;
+                button{
+                    background-color: transparent;
+                    margin: 0px 5px;
+                    padding: 5px 10px;
+                    text-align: center;
+                    border: none;
+                    transition: .3s;
+                    border-radius: 50px;
+                    cursor: pointer;
+                    svg{
+                        padding: 2px 0px 0px;
+                    }
+                   &:hover{
+                        background-color: rgb(132, 132, 190);
+                        transition: .3s;
+                    }
+                }
+
+            }
+            .SellerInfo--price--content--locationDate{
+                display: flex;
+                justify-content: space-between;
+                p{
+                    font-size: 12px;
+                    color: rgba(0,47,52,.64);
+                    line-height:20px
+                }
+
+            }
+        }
+    }
+    .SellerInfo--SellerDescription{
+    @include  contentBackground;
+        h2{
+            font-size: 20px;
+            line-height: 24px;
+            font-weight: 700;
+            color: #002f34;
+            font-weight: 400;
+            padding: 0;
+            font-style: normal;
+            font-stretch: normal;
+            margin-bottom: 10px;
+        }
+        .SellerInfo--SellerDescription--profile{
+            .SellerInfo--SellerDescription--profile--imgContent{
+                img{
+                    height:69px;
+                    width: 69px;
+                    object-fit: cover;
+                    border-radius: 50px;
+                    margin-right: 10px;
+                }
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .SellerInfo--SellerDescription--profile--imgContent--text{
+                    display:flex;
+                    align-items: center;
+                    h4{
+                        font-weight: 500;
+                        font-size: 16px;
+                        color: #002f34;
+                        display: block;
+                        padding-right: 16px;
+                        text-transform: capitalize;
+                        font-weight: 700;
+                    }
+                    p{
+                        font-size: 12px;
+                        line-height: 18px;
+                        color: #000;
+                    }
+                }
+            }
+        }
+        
+        .SellerInfo--SellerDescription--button{
+            background-color: #002f34;
+            color: #fff;
+            border-color: #7f9799;
+            width: 100%;
+            margin-top:10px ;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 0px;
+            &:hover{
+            background-color: transparent;
+            color:#002f34 ;
+            padding: 7px 0px;
+            border: 3px solid #002f34;
+
+            }
+        }
+        .SellerInfo--SellerDescription--number{
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         span{
+             display:block;
+             margin: 0px 5px;
+         }
+        }
+    }
+    .SellerInfo--map{
+    @include  contentBackground;
+
+        h2{
+            margin: 0 0 16px;
+            font-weight: 700;
+            font-size: 20px;
+            color: #002f34;
+        }
+        p{
+            font-size: 12px;
+            color: rgba(0,47,52,.64);
+        }
+        img{
+            max-width: 366px;
+            width: 100%;
+            margin-top:10px ;
+        }
+
+    }
+}

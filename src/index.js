@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./Style/reset.css";
+import "./styles/reset.css";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+
+// redux
 import { Provider } from "react-redux";
-import store from "./reducer/Store/Store";
+import store from "./redux/store";
 
 ReactDOM.render(
   <Provider store={store}>

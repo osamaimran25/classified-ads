@@ -1,0 +1,235 @@
+import { withStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import MuiDialogTitle from "@material-ui/core/DialogTitle";
+import MuiDialogContent from "@material-ui/core/DialogContent";
+// import MuiDialogActions from "@material-ui/core/DialogActions";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
+import Typography from "@material-ui/core/Typography";
+import { useState } from "react";
+import LoginCarousel from "./LoginCarousel";
+import facebookIcon from "../../../assets/login/facebook.png";
+import googleIcon from "../../../assets/login/google.png";
+import logo from "../../../assets/images/Islamic ad.png";
+import "./Login.scss";
+import { Link } from "react-router-dom";
+import TextField from "@material-ui/core/TextField";
+import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
+import RegisterDailog from "./RegisterDailog";
+
+const styles = (theme) => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(2),
+  },
+  closeButton: {
+    position: "absolute",
+    right: theme.spacing(1),
+    top: theme.spacing(1),
+    color: theme.palette.grey[500],
+  },
+});
+
+const DialogTitle = withStyles(styles)((props) => {
+  const { children, classes, onClose, ...other } = props;
+  return (
+    <MuiDialogTitle disableTypography className={classes.root} {...other}>
+      <Typography variant="h6">{children}</Typography>
+      {onClose ? (
+        <IconButton
+          aria-label="close"
+          className={classes.closeButton}
+          onClick={onClose}
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </MuiDialogTitle>
+  );
+});
+
+const DialogContent = withStyles((theme) => ({
+  root: {
+    padding: theme.spacing(2),
+  },
+}))(MuiDialogContent);
+
+// const DialogActions = withStyles((theme) => ({
+//   root: {
+//     margin: 0,
+//     padding: theme.spacing(1),
+//   },
+// }))(MuiDialogActions);
+
+const Login = ({ children }) => {
+  const [open, setOpen] = useState(false);
+  const [register, setRegister] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const loginCode = (
+    <>
+      <div>
+        <LoginCarousel />
+      </div>
+      <div className="login_wrapper">
+        <Button variant="outlined" color="default">
+          <span>
+            <img src={facebookIcon} alt="facebook" />
+          </span>
+          Continue with Facebook
+        </Button>
+        <Button variant="outlined" color="default" className="googleButton">
+          <span>
+            <img src={googleIcon} alt="facebook" />
+          </span>
+          Continue with Google
+        </Button>
+      </div>
+      <div style={{ textAlign: "center" }}>
+        <h4>or</h4>
+        <Button
+          variant="text"
+          color="primary"
+          onClick={() => setRegister(true)}
+        >
+          Login with Email
+        </Button>
+      </div>
+      <div style={{ textAlign: "center", margin: "15px 0" }}>
+        <Typography variant="subtitle1">
+          We won't share your personal details with anyone
+        </Typography>
+        <Typography
+          variant="subtitle2"
+          style={{ marginTop: "10px", color: "#002f34a3" }}
+        >
+          If you continue, you are accepting
+          <Link to="/" style={{ margin: "0 6px" }}>
+            Terms and Conditions
+          </Link>
+          and
+          <Link to="/" style={{ marginLeft: "6px" }}>
+            Privacy Policy
+          </Link>
+        </Typography>
+      </div>
+    </>
+  );
+
+  const registerCode = (
+    <>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <img
+          src={logo}
+          alt="register page"
+          style={{ width: "20%", margin: "0 auto" }}
+        />
+        <Typography
+          variant="h5"
+          color="initial"
+          style={{ marginTop: "15px ", fontWidth: "700" }}
+        >
+          Enter your email to login
+        </Typography>
+      </div>
+      <div style={{ width: "80%", margin: "0 auto" }}>
+        <div style={{ margin: "30px 0" }}>
+          <TextField
+            id="email"
+            name="email"
+            placeholder="Enter your Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            variant="outlined"
+            fullWidth
+          />
+        </div>
+        <div>
+          <Typography
+            variant="subtitle1"
+            color="initial"
+            style={{ margin: "15px", textAlign: "center" }}
+          >
+            If you are a new user please select any other login option from
+            previous page
+          </Typography>
+          {/* <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            style={{ padding: "15px 0", fontSize: "16px" }}
+            disabled={!email}
+          >
+            Next
+          </Button> */}
+          <RegisterDailog email={email} />
+        </div>
+        <div>
+          <Typography
+            variant="subtitle2"
+            color="initial"
+            style={{ margin: "15px", textAlign: "center" }}
+          >
+            We won't reveal your email to anyone else nor use it to send you
+            spam
+          </Typography>
+        </div>
+      </div>
+    </>
+  );
+
+  return (
+    <div>
+      <p variant="text" color="primary" onClick={handleClickOpen}>
+        Login
+      </p>
+      <Dialog
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+      >
+        <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+          {!register ? (
+            <>
+              <Typography
+                variant="h6"
+                style={{ color: "#002f34", fontWeight: "700" }}
+              >
+                User Login
+              </Typography>
+            </>
+          ) : (
+            <>
+              <Button
+                variant="outlined"
+                size="small"
+                onClick={() => setRegister(false)}
+              >
+                <KeyboardBackspaceIcon />
+              </Button>
+            </>
+          )}
+        </DialogTitle>
+        <DialogContent dividers>
+          {!register ? <> {loginCode} </> : <> {registerCode} </>}
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+};
+
+export default Login;

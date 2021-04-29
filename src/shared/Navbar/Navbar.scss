@@ -1,0 +1,34 @@
+.navbar{
+    max-width: 1262px;
+    width: 100%;
+    margin: 0 auto;
+    .navbar--appBar{
+        background-color: white !important ;
+        color: black;
+    .navbar--appBar--content{
+        max-width: 1262px;
+        width: 100%;
+        margin: 0 auto;
+        display:flex;
+        justify-content: space-between;
+    .navbar--appBar--content--logo{
+
+}   .navbar--appBar--content--search{
+    max-width: 586px !important;
+    width: 100% !important;
+    input {
+        max-width: 586px !important;
+        width: 100% !important;
+        min-width: none;
+        border: 1px solid black;
+        padding: 10px;
+    }
+}   .navbar--appBar--content--language{
+
+}  .navbar--appBar--content--login{
+
+}
+
+    }
+    }
+}

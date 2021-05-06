@@ -9,9 +9,9 @@ const Home = () => {
     <Layout>
       <main>
         <HeroArea />
-        <section>
+        {/* <section>
           <MoreOnMotorcycles />
-        </section>
+        </section> */}
         <section>
           <FreeshRecommendations />
         </section>

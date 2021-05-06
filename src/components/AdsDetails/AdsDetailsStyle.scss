@@ -2,4 +2,7 @@
     max-width: 1262px;
     width: 100%;
     margin: 0 auto;
+    @media only screen and (max-width: 1262px){
+        padding: 24px;
+    }
 }

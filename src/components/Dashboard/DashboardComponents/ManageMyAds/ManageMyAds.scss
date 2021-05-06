@@ -1,0 +1,43 @@
+.manage {
+  border: 1px solid #e8e8e8;
+  padding: 20px 5px 5px 5px;
+  text-align: center;
+
+  h1 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #222831;
+  }
+  p {
+    font-size: 20px;
+    padding: 15px 0px;
+
+    span {
+      color: #092532;
+      font-weight: bold;
+    }
+  }
+
+  .manage__ads {
+    padding: 20px 0px;
+    background-color: #eeeeee;
+    display: flex;
+    justify-content: center;
+
+    .btn {
+      margin-top: 20px;
+      border-width: 0;
+      width: 100%;
+      padding: 15px 20px;
+      background-color: #092532;
+      color: white;
+
+      &:hover {
+        background-color: #184d47;
+        color: white;
+        transition: all 0.5s ease-in-out;
+        cursor: pointer;
+      }
+    }
+  }
+}

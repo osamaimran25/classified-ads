@@ -55,13 +55,6 @@ const DialogContent = withStyles((theme) => ({
   },
 }))(MuiDialogContent);
 
-// const DialogActions = withStyles((theme) => ({
-//   root: {
-//     margin: 0,
-//     padding: theme.spacing(1),
-//   },
-// }))(MuiDialogActions);
-
 const Login = ({ children }) => {
   const [open, setOpen] = useState(false);
   const [register, setRegister] = useState(false);
@@ -79,18 +72,58 @@ const Login = ({ children }) => {
       <div>
         <LoginCarousel />
       </div>
+
+      <div>
+        <div className="LoginInput_wrapper">
+          <TextField
+            variant="outlined"
+            placeholder="Enter your Email address here"
+            // onChange={onChange}
+            fullWidth
+            type="email"
+            name="phone"
+            // value={data.phone}
+            className="adsInput"
+          />
+        </div>
+
+        <div className="LoginInput_wrapper">
+          <TextField
+            variant="outlined"
+            placeholder="Enter your password here"
+            // onChange={onChange}
+            fullWidth
+            type="text"
+            name="phone"
+            // value={data.phone}
+            className="adsInput"
+          />
+        </div>
+
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Button variant="contained" color="primary" className="loginButton">
+            Login
+          </Button>
+        </div>
+      </div>
+
       <div className="login_wrapper">
-        <Button variant="outlined" color="default">
+        <Button variant="outlined" color="default" className="google_Button">
           <span>
             <img src={facebookIcon} alt="facebook" />
           </span>
-          Continue with Facebook
+          Facebook
         </Button>
-        <Button variant="outlined" color="default" className="googleButton">
+        <Button
+          variant="outlined"
+          color="default"
+          style={{ marginLeft: "6px" }}
+          className="facebook_Button"
+        >
           <span>
             <img src={googleIcon} alt="facebook" />
           </span>
-          Continue with Google
+          Google
         </Button>
       </div>
       <div style={{ textAlign: "center" }}>
@@ -167,15 +200,6 @@ const Login = ({ children }) => {
             If you are a new user please select any other login option from
             previous page
           </Typography>
-          {/* <Button
-            variant="contained"
-            color="primary"
-            fullWidth
-            style={{ padding: "15px 0", fontSize: "16px" }}
-            disabled={!email}
-          >
-            Next
-          </Button> */}
           <RegisterDailog email={email} />
         </div>
         <div>

@@ -16,7 +16,7 @@ completed design login signup and signup with social media FB and google is enou
 
 
 https://www.facebook.com/settings ---- dashboard simple
-2.
+2.https://my.gumtree.com/manage-account/ --- name eigula follow kora lagbe
 
 3.https://www.olx.in/ [home page]
 4. https://www.olx.in/nf/chat [chat]
@@ -27,3 +27,19 @@ https://www.facebook.com/settings ---- dashboard simple
 
 8. https://www.olx.in/mobiles_c1411 [category]
 9.https://www.olx.in/myorders/invoices
+
+
+
+
+
+//url
+https://documenter.getpostman.com/view/10766349/TWDUqddE#72023335-ac30-4529-a16e-cecc07154846
+
+
+
+buttons color should be light color and some fancy hover and border
+user some good fonds with light weight it is making heavy to user eyes
+add location field next to search and both of them should be center
+user icon for chat
+reduce the width of button of profile or make a drop down which should have all options
+AND PLEASE DONT COPY OLX DESIGN

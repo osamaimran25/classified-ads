@@ -5,6 +5,11 @@ import { Link } from "react-router-dom";
 import AdsCard from "../../../../common/AdsCard";
 import motorcycleData from "./Motorcycles";
 import "./MoreOnMotorcycles.scss";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { getAds } from "../../../../redux/reducers/ads";
+import { useEffect } from "react";
+// import { getAds } from "../../../../redux/actions/adsAction";
+import axios from "axios";
 
 const responsive = {
   superLargeDesktop: {
@@ -25,7 +30,21 @@ const responsive = {
   },
 };
 
-const MoreOnMotorcycles = () => {
+const MoreOnMotorcycles = ({ getAds }) => {
+  // const ads = useSelector((state) => state.ads);
+
+  // const dispatch = useDispatch();
+
+  useEffect(() => {
+    getAds();
+    // const data = async () => {
+    //   const res = await axios.get(`http://209.97.162.0/ads/list`);
+    //   console.log(res.data);
+    // };
+    // data();
+  }, []);
+
+  // getAds;
   return (
     <div className="more_motorcycles_wrapper">
       <Container>
@@ -70,4 +89,5 @@ const MoreOnMotorcycles = () => {
   );
 };
 
-export default MoreOnMotorcycles;
+// export default MoreOnMotorcycles;
+export default connect((state) => ({}), { getAds })(MoreOnMotorcycles);

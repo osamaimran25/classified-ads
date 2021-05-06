@@ -1,6 +1,7 @@
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
 import SliceText from "../HOC/SliceText";
 import Readmore from "../HOC/Readmore";
+import "./Common.scss";
 
 const AdsCard = ({
   image,
@@ -20,6 +21,7 @@ const AdsCard = ({
         height="200"
         alt={alt}
         title={imgTitle}
+        className="card__Image"
       />
       <CardContent style={{ background: "#a5abbd", color: "#3d3d4e" }}>
         <Typography variant="h6" style={{ fontWeight: "600" }}>

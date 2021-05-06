@@ -4,8 +4,9 @@ import Footer from "./Footer/Footer";
 import Navbar from "./Menu/Navbar";
 import SecondMenu from "./SecondMenu/SecondMenu";
 
-const Layout = ({ children, pageTitle }) => {
+const Layout = ({ children, pageTitle, hindMenu }) => {
   const history = useHistory();
+
   return (
     <>
       <Helmet>
@@ -14,8 +15,9 @@ const Layout = ({ children, pageTitle }) => {
       <div style={{ marginBottom: "72px" }}>
         <Navbar />
       </div>
-      {history.location.pathname !== "/HelpCenter" && <SecondMenu />}
-
+      {history.location.pathname !== "/HelpCenter" && (
+        <>{!hindMenu && <SecondMenu />}</>
+      )}
       {children}
       <Footer />
     </>

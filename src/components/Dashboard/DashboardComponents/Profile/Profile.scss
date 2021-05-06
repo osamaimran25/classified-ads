@@ -1,0 +1,180 @@
+.dashboard__profile {
+  padding: 50px 0px;
+  border: 1px solid #e8e8e8;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+
+  .dashboard__profile__field {
+    width: 60%;
+    @media screen and(max-width: 959px) {
+      width: 95% !important;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 0px 0px 20px 0px;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .dashboard__profile_info {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 0px;
+      border-bottom: 1px solid #e8e8e8;
+
+      h5 {
+        font-size: 16px;
+        color: grey;
+        font-weight: bold;
+      }
+      p {
+        padding: 5px 0 0 0;
+        font-size: 18px;
+      }
+      span {
+        color: grey;
+        font-size: 20px;
+        padding-top: 10px;
+      }
+      a {
+        color: #114e60;
+        font-weight: bold;
+        padding: 5px 15px 0 0;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+          color: #00adb5;
+        }
+      }
+    }
+    .dashboard__contact {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 0px;
+      border-bottom: 1px solid #e8e8e8;
+
+      h4 {
+        font-size: 20px;
+        font-weight: bolder;
+        padding-bottom: 5px;
+      }
+      span {
+        color: grey;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 30px;
+      }
+      a {
+        color: #114e60;
+        font-weight: bold;
+        padding: 0px 15px 0 0;
+        text-decoration: none;
+        line-height: 10px;
+
+        &:hover {
+          text-decoration: underline;
+          color: #00adb5;
+        }
+      }
+    }
+    .dashboard__cv_section {
+      padding: 20px 0px;
+      border-bottom: 1px solid #e8e8e8;
+
+      h5 {
+        font-weight: bold;
+        font-size: 20px;
+        padding: 10px 0px;
+      }
+      p {
+        color: grey;
+      }
+      .dashboard__uploadCV {
+        width: 100%;
+        background: #f1f1f1;
+        padding: 20px 10px;
+        margin: 20px 0px;
+        border-radius: 10px;
+
+        label {
+          text-align: center;
+          width: 100%;
+          background-color: white;
+          border: 1px solid #b1adb3;
+          border-radius: 5px;
+          height: 44px;
+          font-size: 18px;
+          font-weight: bold;
+
+          &:hover {
+            color: white;
+            background-color: #184d47;
+            transition: all 0.5s ease-in-out;
+          }
+        }
+        p {
+          padding: 10px 0 0 5px;
+          color: black;
+        }
+        .custom-file-upload {
+          border: 1px solid #ccc;
+          display: inline-block;
+          padding: 6px 12px;
+          cursor: pointer;
+        }
+      }
+    }
+    .dashboard__account {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      padding: 20px 0px;
+
+      h2 {
+        color: black;
+        font-size: 18px;
+        font-weight: bold;
+        padding-bottom: 10px;
+      }
+      a {
+        color: #114e60;
+        font-weight: bold;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+          color: #00adb5;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .dashboard__profile_info {
+      flex-direction: column;
+
+      h5 {
+        padding-top: 5px;
+      }
+    }
+    .dashboard__contact {
+      flex-direction: column;
+      align-items: flex-start;
+      span {
+        padding: 20px 0 0 0;
+      }
+      p {
+        padding-bottom: 5px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 425px) {
+  .dashboard__profile__field {
+    width: 100% !important;
+    padding: 0px 20px;
+  }
+}

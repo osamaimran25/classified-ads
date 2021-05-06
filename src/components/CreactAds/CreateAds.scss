@@ -1,0 +1,17 @@
+@mixin displayCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.create_ads_content {
+  padding: 30px 0;
+  .create_ads_wrapper {
+    @include displayCenter;
+    .adsInput_wrapper {
+      margin: 15px 0;
+      .adsInput {
+        margin: 10px 0;
+      }
+    }
+  }
+}

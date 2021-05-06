@@ -16,8 +16,9 @@ import HelpIcon from "@material-ui/icons/Help";
 import InfoIcon from "@material-ui/icons/Info";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import { Link } from "react-router-dom";
-
+import Login from "../../Auth/Login/Login";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -86,7 +87,7 @@ const Dropdown = () => {
           onClick={handleToggle}
           size="small"
           style={{
-            width: "150px",
+            width: "130px",
             display: "flex",
             justifyContent: "space-between",
           }}
@@ -124,21 +125,19 @@ const Dropdown = () => {
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem>
-                      Switch to
-                      {localStorage.getItem("role") &&
-                      localStorage.getItem("role") === "client"
-                        ? " Freelancer"
-                        : " Client"}
-                    </MenuItem>
+                    <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                      <MenuItem>
+                        <PersonOutlineIcon style={{ marginRight: "5px" }} />{" "}
+                        Profile
+                      </MenuItem>
+                    </Link>
                     <Divider style={{ marginBottom: "8px", color: "red" }} />
 
-                    <MenuItem onClick={handleClose}>
-                      <HistoryIcon style={{ marginRight: "5px" }} />
-                      <Link to="/HelpCenter" style={{ textDecoration: "none" }}>
-                        Help
-                      </Link>
-                    </MenuItem>
+                    <Link to="/HelpCenter" style={{ textDecoration: "none" }}>
+                      <MenuItem onClick={handleClose}>
+                        <HistoryIcon style={{ marginRight: "5px" }} /> Help
+                      </MenuItem>
+                    </Link>
 
                     <MenuItem onClick={handleClose}>
                       <TranslateIcon style={{ marginRight: "5px" }} /> English

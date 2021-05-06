@@ -1,0 +1,22 @@
+.swiper-container {
+  width: 100%;
+}
+
+.swiper-pagination {
+  bottom: 0;
+  padding-bottom: 10px;
+}
+
+.swiper-wrapper {
+  padding-inline-start: 0;
+}
+
+.product-slider {
+  ._Pfcmb {
+    height: 450px !important;
+  }
+  margin-top: 12px;
+  @media only screen and (max-width: 600px) {
+    padding: 0px 16px;
+  }
+}

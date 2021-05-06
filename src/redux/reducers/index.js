@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import todoReducer from "./todoReducer";
+import adsReducer from "./ads";
 
 const rootReducer = combineReducers({
-  todo: todoReducer,
+  ads: adsReducer,
 });
 
 export default rootReducer;

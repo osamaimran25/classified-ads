@@ -30,18 +30,6 @@ const ChatBox = ({ selectedChat }) => {
               marginBottom: "10px",
             }}
           >
-            {/* <input
-              type="text"
-              placeholder="Type a message..."
-              style={{
-                borderRadius: "25px",
-                border: "none",
-                background: "#d6d6d6",
-                padding: "10px 0",
-                width: "95%",
-                paddingLeft: "10px",
-              }}
-            /> */}
             <aside style={{ width: "95%" }}>
               <InputEmoji
                 value={text}

@@ -1,12 +1,24 @@
 import { Container, Grid, Typography, Button } from "@material-ui/core";
 import { useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import AdsCard from "../../../../common/AdsCard";
-import freeshData from "./freeshData";
 import "./FreeshRecommendations.scss";
+import { getAds } from "../../../../redux/reducers/ads";
+import { useEffect } from "react";
+import { showImage, getHourMinuteSeconds } from "../../../../utils/index";
 
-const FreeshRecommendations = () => {
+const FreeshRecommendations = ({ getAds, ads }) => {
   const [seeAll, setSeeAll] = useState(false);
+  const [adss, setAds] = useState(null);
+
+  useEffect(() => {
+    getAds();
+  }, []);
+
+  useEffect(() => {
+    setAds(ads);
+  }, [ads]);
 
   return (
     <div className="FreeshRecommendations_wrapper">
@@ -18,27 +30,27 @@ const FreeshRecommendations = () => {
             justifyContent: "space-between",
           }}
         >
-          <Typography variant="h4">Fresh Recommendations</Typography>
-          <Button variant="text" color="default">
-            View More
-          </Button>
+          <Typography variant="h5">
+            <strong style={{ fontWeight: "600" }}>Fresh Recommendations</strong>
+          </Typography>
         </div>
 
         <Grid container spacing={3}>
           {!seeAll ? (
             <>
-              {freeshData?.slice(0, 9).map((el) => (
+              {adss?.slice(0, 9).map((el) => (
                 <Grid key={el.id} item md={3} sm={6} xs={12} lg={3}>
                   <Link to="/AdsDetails" style={{ textDecoration: "none" }}>
                     <AdsCard
-                      image={el.image}
-                      alt={el.alt}
+                      image={showImage(el.image_01)}
+                      alt={"all ads here"}
                       imgTitle={el.title}
                       title={el.title}
-                      Description={el.Description}
-                      balance={el.balance}
-                      location={el.location}
-                      date={el.date}
+                      Description={el.description}
+                      balance={el.price}
+                      location={el.locations}
+                      // date={getHourMinuteSeconds(el.date_posted)}
+                      date={el.date_posted}
                     />
                   </Link>
                 </Grid>
@@ -46,18 +58,19 @@ const FreeshRecommendations = () => {
             </>
           ) : (
             <>
-              {freeshData?.map((el) => (
+              {adss?.map((el) => (
                 <Grid key={el.id} item md={3} sm={6} xs={12} lg={3}>
-                  <Link to="/" style={{ textDecoration: "none" }}>
+                  <Link to="/AdsDetails" style={{ textDecoration: "none" }}>
                     <AdsCard
-                      image={el.image}
-                      alt={el.alt}
+                      image={showImage(el.image_01)}
+                      alt={"all ads here"}
                       imgTitle={el.title}
                       title={el.title}
-                      Description={el.Description}
-                      balance={el.balance}
-                      location={el.location}
-                      date={el.date}
+                      Description={el.description}
+                      balance={el.price}
+                      location={el.locations}
+                      // date={getHourMinuteSeconds(Number(el.date_posted))}
+                      date={el.date_posted}
                     />
                   </Link>
                 </Grid>
@@ -70,7 +83,8 @@ const FreeshRecommendations = () => {
             <Button
               onClick={() => setSeeAll(!seeAll)}
               variant="contained"
-              color="primary"
+              color="secondary"
+              style={{ borderRadius: "20px", padding: "8px 15px" }}
             >
               Load more
             </Button>
@@ -81,4 +95,9 @@ const FreeshRecommendations = () => {
   );
 };
 
-export default FreeshRecommendations;
+export default connect(
+  (state) => ({
+    ads: state.ads.ads,
+  }),
+  { getAds }
+)(FreeshRecommendations);

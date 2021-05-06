@@ -1,56 +1,25 @@
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Thumbs } from "swiper/core";
+// // import css file
+import "./ProductSlider.scss";
+// // import img
+import images from "./images";
 
-// install Swiper's Thumbs component
-SwiperCore.use([Thumbs]);
+import React from "react";
+import Carousel from "react-gallery-carousel";
+import "react-gallery-carousel/dist/index.css";
 
 const ProductSlider = () => {
-  // store thumbs swiper instance
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const image = images.map((size) => ({
+    src: size.img,
+    sizes: "(max-width: 1000px) 400px, (max-width: 2000px) 500px, 400px",
+    alt: `product-img`,
+    thumbnail: size.img,
+  }));
 
   return (
-    <main>
-      {/* Main Swiper -> pass thumbs swiper instance */}
-      <Swiper thumbs={{ swiper: thumbsSwiper }}>
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-      </Swiper>
-
-      {/* Thumbs Swiper -> store swiper instance */}
-      {/* It is also required to set watchSlidesVisibility and watchSlidesProgress props */}
-      <Swiper
-        onSwiper={setThumbsSwiper}
-        watchSlidesVisibility
-        watchSlidesProgress
-      >
-        <SwiperSlide>
-          <div style={{ backgroundColor: "red" }}>Slide 1</div>
-        </SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-      </Swiper>
-      <Swiper
-        onSwiper={setThumbsSwiper}
-        watchSlidesVisibility
-        watchSlidesProgress
-      >
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-      </Swiper>
-      <Swiper
-        onSwiper={setThumbsSwiper}
-        watchSlidesVisibility
-        watchSlidesProgress
-      >
-        <SwiperSlide>
-          <div style={{ backgroundColor: "red" }}>Slide 1</div>
-        </SwiperSlide>
-      </Swiper>
-    </main>
+    <div className="product-slider">
+      <Carousel images={image} />
+    </div>
   );
 };
+
 export default ProductSlider;

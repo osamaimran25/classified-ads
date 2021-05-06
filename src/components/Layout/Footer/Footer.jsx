@@ -152,7 +152,14 @@ const Footer = () => {
             spacing={1}
             style={{ display: "flex", justifyContent: "space-between" }}
           >
-            <Grid item md={5} sm={6} xs={12} ls={5}>
+            <Grid
+              item
+              md={5}
+              sm={12}
+              xs={12}
+              ls={5}
+              className="copyWrite__footer_text"
+            >
               <Typography variant="subtitle1">
                 Other Countries Pakistan - South Africa - Indonesia
               </Typography>
@@ -160,12 +167,15 @@ const Footer = () => {
             <Grid
               item
               md={5}
-              sm={6}
+              sm={12}
               xs={12}
               ls={5}
               style={{ textAlign: "right" }}
             >
-              <Typography variant="subtitle1">
+              <Typography
+                variant="subtitle1"
+                className="copyWrite__footer_text"
+              >
                 Free Classifieds in India. &copy;{new Date().getFullYear()}
                 <Link to="/" style={{ marginLeft: "6px", color: "#fff" }}>
                   IslamicAds{" "}

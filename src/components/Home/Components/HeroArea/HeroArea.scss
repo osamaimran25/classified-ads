@@ -4,13 +4,18 @@
     rgba(0, 0, 255, 0.664),
     rgba(0, 0, 255, 0.644)
   );
+  margin-top: -20px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
   padding: 100px 0;
 
   h4 {
     color: #fff;
     margin-bottom: 20px;
+    font-family: "fantasy";
   }
   h6 {
     color: #fff;
+    font-family: "Comic Sans MS";
   }
 }

@@ -7,6 +7,7 @@ import List from "@material-ui/core/List";
 import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import menuIamge from "../../../assets/menu.png";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -68,8 +69,6 @@ function DashboardDrawer(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      {/* <AppBar position="fixed" className={classes.appBar}> */}
-      {/* <LightTooltip btnTitle="Dashboard" placement="start"> */}
       <Toolbar
         position="fixed"
         className={classes.appBar}
@@ -82,15 +81,15 @@ function DashboardDrawer(props) {
           onClick={handleDrawerToggle}
           className={classes.menuButton}
         >
-          <MenuIcon />
+          <img
+            src={menuIamge}
+            alt="menu dropdown"
+            style={{ width: "40px", paddingLeft: "10px" }}
+          />
         </IconButton>
       </Toolbar>
-      {/* </LightTooltip> */}
-
-      {/* </AppBar> */}
 
       <nav className={classes.drawer} aria-label="mailbox folders">
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
           <Drawer
             container={container}
@@ -102,29 +101,9 @@ function DashboardDrawer(props) {
               paper: classes.drawerPaper,
             }}
             ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
+              keepMounted: true,
             }}
           >
-            {/* <AppBar position="fixed" className={classes.appBar}>  */}
-            <Toolbar
-              style={{
-                display: "flex",
-                padding: "0",
-                justifyContent: "flex-end",
-              }}
-            >
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                className={classes.menuButton}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Toolbar>
-            {/* </AppBar> */}
-
             {drawer}
           </Drawer>
         </Hidden>
@@ -145,26 +124,3 @@ function DashboardDrawer(props) {
 }
 
 export default DashboardDrawer;
-
-{
-  /* <Hidden smUp>
-  <DashboardDrawer>
-    {localStorage.getItem("role") === "freelancer" && (
-      <div
-        style={{
-          backgroundColor: "white",
-          marginBottom: "7px",
-        }}
-      >
-        <FreelancerPlan />
-      </div>
-    )}
-    <Divider />
-    <div className="openDrawer">
-      {localStorage.getItem("role") === "client"
-        ? clientRoute
-        : freelancerRoute}
-    </div>
-  </DashboardDrawer>
-</Hidden>; */
-}

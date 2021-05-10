@@ -153,9 +153,9 @@ const Navbar = () => {
                 alignItems: "center",
               }}
             >
-              <Hidden mdUp>
+              {/* <Hidden mdUp>
                 <DashboardDrawer>{drawarMenu}</DashboardDrawer>
-              </Hidden>
+              </Hidden> */}
               <Link to="/">
                 <CardMedia
                   component="img"

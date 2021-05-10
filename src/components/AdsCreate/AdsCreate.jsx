@@ -67,7 +67,7 @@ const AdsCreate = () => {
           {/* category option here */}
           <Grid container item spacing={2}>
             <Card style={{ width: "100%" }}>
-              <CardContent style={{ background: "#1876d2" }}>
+              <CardContent style={{ background: "#2f3a51" }}>
                 <Typography
                   variant="h6"
                   style={{ color: "#fff", fontWeight: "700" }}
@@ -130,7 +130,7 @@ const AdsCreate = () => {
               <Grid container item spacing={2} style={{ marginTop: "30px" }}>
                 <Grid item md={6} sm={12} xs={12}>
                   <Card style={{ width: "100%" }}>
-                    <CardContent style={{ background: "#1876d2" }}>
+                    <CardContent style={{ background: "#2f3a51" }}>
                       <Typography
                         variant="h6"
                         style={{ color: "#fff", fontWeight: "700" }}
@@ -169,7 +169,7 @@ const AdsCreate = () => {
                 </Grid>
                 <Grid item md={6} sm={12} xs={12}>
                   <Card style={{ width: "100%" }}>
-                    <CardContent style={{ background: "#1876d2" }}>
+                    <CardContent style={{ background: "#2f3a51" }}>
                       <Typography
                         variant="h6"
                         style={{ color: "#fff", fontWeight: "700" }}
@@ -222,7 +222,7 @@ const AdsCreate = () => {
               {/* images option here */}
               <Grid container item spacing={2} style={{ marginTop: "30px" }}>
                 <Card style={{ width: "100%" }}>
-                  <CardContent style={{ background: "#1876d2" }}>
+                  <CardContent style={{ background: "#2f3a51" }}>
                     <Typography
                       variant="h6"
                       style={{ color: "#fff", fontWeight: "700" }}
@@ -272,7 +272,7 @@ const AdsCreate = () => {
               <Grid container item spacing={2} style={{ marginTop: "30px" }}>
                 <Grid item md={6} sm={12} xs={12}>
                   <Card style={{ width: "100%" }}>
-                    <CardContent style={{ background: "#1876d2" }}>
+                    <CardContent style={{ background: "#2f3a51" }}>
                       <Typography
                         variant="h6"
                         style={{ color: "#fff", fontWeight: "700" }}
@@ -305,7 +305,7 @@ const AdsCreate = () => {
 
                 <Grid item md={6} sm={12} xs={12}>
                   <Card style={{ width: "100%" }}>
-                    <CardContent style={{ background: "#1876d2" }}>
+                    <CardContent style={{ background: "#2f3a51" }}>
                       <Typography
                         variant="h6"
                         style={{ color: "#fff", fontWeight: "700" }}
@@ -338,7 +338,7 @@ const AdsCreate = () => {
               {/* promote option here */}
               <Grid container item spacing={2} style={{ marginTop: "30px" }}>
                 <Card style={{ width: "100%" }}>
-                  <CardContent style={{ background: "#1876d2" }}>
+                  <CardContent style={{ background: "#2f3a51" }}>
                     <Typography
                       variant="h6"
                       style={{ color: "#fff", fontWeight: "700" }}
@@ -360,7 +360,7 @@ const AdsCreate = () => {
               {/* email and phone option here */}
               <Grid container item spacing={2} style={{ marginTop: "30px" }}>
                 <Card style={{ width: "100%" }}>
-                  <CardContent style={{ background: "#1876d2" }}>
+                  <CardContent style={{ background: "#2f3a51" }}>
                     <Typography
                       variant="h6"
                       style={{ color: "#fff", fontWeight: "700" }}
@@ -500,7 +500,7 @@ export default AdsCreate;
 //           {/* category option here */}
 //           <Grid container item spacing={2}>
 //             <Card style={{ width: "100%" }}>
-//               <CardContent style={{ background: "#1876d2" }}>
+//               <CardContent style={{ background: "#2f3a51" }}>
 //                 <Typography
 //                   variant="h6"
 //                   style={{ color: "#fff", fontWeight: "700" }}
@@ -562,7 +562,7 @@ export default AdsCreate;
 //               {/* Location option here */}
 //               <Grid container item spacing={2} style={{ marginTop: "30px" }}>
 //                 <Card style={{ width: "100%" }}>
-//                   <CardContent style={{ background: "#1876d2" }}>
+//                   <CardContent style={{ background: "#2f3a51" }}>
 //                     <Typography
 //                       variant="h6"
 //                       style={{ color: "#fff", fontWeight: "700" }}
@@ -609,7 +609,7 @@ export default AdsCreate;
 //               {/* Title option here */}
 //               <Grid container item spacing={2} style={{ marginTop: "30px" }}>
 //                 <Card style={{ width: "100%" }}>
-//                   <CardContent style={{ background: "#1876d2" }}>
+//                   <CardContent style={{ background: "#2f3a51" }}>
 //                     <Typography
 //                       variant="h6"
 //                       style={{ color: "#fff", fontWeight: "700" }}
@@ -641,7 +641,7 @@ export default AdsCreate;
 //               {/* images option here */}
 //               <Grid container item spacing={2} style={{ marginTop: "30px" }}>
 //                 <Card style={{ width: "100%" }}>
-//                   <CardContent style={{ background: "#1876d2" }}>
+//                   <CardContent style={{ background: "#2f3a51" }}>
 //                     <Typography
 //                       variant="h6"
 //                       style={{ color: "#fff", fontWeight: "700" }}
@@ -683,7 +683,7 @@ export default AdsCreate;
 //               {/* description option here */}
 //               <Grid container item spacing={2} style={{ marginTop: "30px" }}>
 //                 <Card style={{ width: "100%" }}>
-//                   <CardContent style={{ background: "#1876d2" }}>
+//                   <CardContent style={{ background: "#2f3a51" }}>
 //                     <Typography
 //                       variant="h6"
 //                       style={{ color: "#fff", fontWeight: "700" }}
@@ -715,7 +715,7 @@ export default AdsCreate;
 //               {/* price option here */}
 //               <Grid container item spacing={2} style={{ marginTop: "30px" }}>
 //                 <Card style={{ width: "100%" }}>
-//                   <CardContent style={{ background: "#1876d2" }}>
+//                   <CardContent style={{ background: "#2f3a51" }}>
 //                     <Typography
 //                       variant="h6"
 //                       style={{ color: "#fff", fontWeight: "700" }}
@@ -747,7 +747,7 @@ export default AdsCreate;
 //               {/* promote option here */}
 //               <Grid container item spacing={2} style={{ marginTop: "30px" }}>
 //                 <Card style={{ width: "100%" }}>
-//                   <CardContent style={{ background: "#1876d2" }}>
+//                   <CardContent style={{ background: "#2f3a51" }}>
 //                     <Typography
 //                       variant="h6"
 //                       style={{ color: "#fff", fontWeight: "700" }}
@@ -769,7 +769,7 @@ export default AdsCreate;
 //               {/* email and phone option here */}
 //               <Grid container item spacing={2} style={{ marginTop: "30px" }}>
 //                 <Card style={{ width: "100%" }}>
-//                   <CardContent style={{ background: "#1876d2" }}>
+//                   <CardContent style={{ background: "#2f3a51" }}>
 //                     <Typography
 //                       variant="h6"
 //                       style={{ color: "#fff", fontWeight: "700" }}

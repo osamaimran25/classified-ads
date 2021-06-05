@@ -7,7 +7,7 @@ import MuiDialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginCarousel from "./LoginCarousel";
 import facebookIcon from "../../../assets/login/facebook.png";
 import googleIcon from "../../../assets/login/google.png";
@@ -17,6 +17,11 @@ import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 import RegisterDailog from "./RegisterDailog";
+import RegisterForm from "../Registration/Register";
+import { UserAction } from "../../../redux/actions";
+import { connect } from "react-redux";
+import { FormHelperText } from "@material-ui/core";
+import { StayCurrentLandscape } from "@material-ui/icons";
 
 const styles = (theme) => ({
   root: {
@@ -55,16 +60,86 @@ const DialogContent = withStyles((theme) => ({
   },
 }))(MuiDialogContent);
 
-const Login = ({ children }) => {
+const Login = (props) => {
   const [open, setOpen] = useState(false);
   const [register, setRegister] = useState(false);
   const [email, setEmail] = useState("");
+  const [showReg, setRegForm] = useState(false);
+  const [password, setPassword] = useState("");
+  const [currentStep, setStep] = useState(2);
+  const [prevStep, setPrevStep] = useState(0);
+
+  useEffect(() => {
+    if (props.loginStatus) {
+      handleClose();
+    }
+  }, [props.loginStatus]);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
+    setEmail("");
     setOpen(false);
+    setRegForm(false);
+    setRegister(false);
+    setStep(0);
+  };
+
+  const registerEvent = (event) => {
+    setRegForm(event);
+    if (event) {
+      setStep(2);
+      setPrevStep(1);
+    } else {
+      setStep(1);
+      setPrevStep(0);
+    }
+  };
+
+  const changeEvent = (e, type) => {
+    switch (type) {
+      case "email":
+        setEmail(e.target.value);
+        break;
+      case "password":
+        setPassword(e.target.value);
+      default:
+        break;
+    }
+  };
+
+  const loginSubmit = () => {
+    const body = {
+      email: email,
+      password: password,
+    };
+    props.loginUser(body);
+  };
+
+  const errorHandler = (error) => {
+    return <FormHelperText error="true">{error}</FormHelperText>;
+  };
+
+  const handleBack = () => {
+    console.log(currentStep, prevStep);
+
+    if (!prevStep) {
+      setRegister(false);
+    } else if (prevStep === 1) {
+      setRegForm(false);
+      setPrevStep(0);
+    } else {
+      setStep(prevStep);
+    }
+  };
+
+  const prevView = (step) => {
+    setPrevStep(step);
+  };
+
+  const viewChange = (currentView) => {
+    setStep(currentView);
   };
 
   const loginCode = (
@@ -78,11 +153,11 @@ const Login = ({ children }) => {
           <TextField
             variant="outlined"
             placeholder="Enter your Email address here"
-            // onChange={onChange}
+            onChange={(e) => changeEvent(e, "email")}
             fullWidth
             type="email"
             name="phone"
-            // value={data.phone}
+            value={email}
             className="adsInput"
           />
         </div>
@@ -91,17 +166,23 @@ const Login = ({ children }) => {
           <TextField
             variant="outlined"
             placeholder="Enter your password here"
-            // onChange={onChange}
+            onChange={(e) => changeEvent(e, "password")}
             fullWidth
-            type="text"
-            name="phone"
-            // value={data.phone}
+            type="password"
+            name="password"
+            value={password}
             className="adsInput"
           />
+          {errorHandler(props.loginError)}
         </div>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button variant="contained" color="primary" className="loginButton">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => loginSubmit()}
+            className="loginButton"
+          >
             Login
           </Button>
         </div>
@@ -159,60 +240,73 @@ const Login = ({ children }) => {
 
   const registerCode = (
     <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <img
-          src={logo}
-          alt="register page"
-          style={{ width: "20%", margin: "0 auto" }}
+      {showReg ? (
+        <RegisterForm
+          email={email}
+          logo={logo}
+          onSubmit={handleClose}
+          setView={prevView}
+          currentStep={currentStep}
+          viewChange={viewChange}
         />
-        <Typography
-          variant="h5"
-          color="initial"
-          style={{ marginTop: "15px ", fontWidth: "700" }}
-        >
-          Enter your email to login
-        </Typography>
-      </div>
-      <div style={{ width: "80%", margin: "0 auto" }}>
-        <div style={{ margin: "30px 0" }}>
-          <TextField
-            id="email"
-            name="email"
-            placeholder="Enter your Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            variant="outlined"
-            fullWidth
-          />
-        </div>
-        <div>
-          <Typography
-            variant="subtitle1"
-            color="initial"
-            style={{ margin: "15px", textAlign: "center" }}
+      ) : (
+        <>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
-            If you are a new user please select any other login option from
-            previous page
-          </Typography>
-          <RegisterDailog email={email} />
-        </div>
-        <div>
-          <Typography
-            variant="subtitle2"
-            color="initial"
-            style={{ margin: "15px", textAlign: "center" }}
-          >
-            We won't reveal your email to anyone else nor use it to send you
-            spam
-          </Typography>
-        </div>
-      </div>
+            <img
+              src={logo}
+              alt="register page"
+              style={{ width: "20%", margin: "0 auto" }}
+            />
+            <Typography
+              variant="h5"
+              color="initial"
+              style={{ marginTop: "15px ", fontWidth: "700" }}
+            >
+              Enter your email to login
+            </Typography>
+          </div>
+          <div style={{ width: "80%", margin: "0 auto" }}>
+            <div style={{ margin: "30px 0" }}>
+              <TextField
+                id="email"
+                name="email"
+                placeholder="Enter your Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                variant="outlined"
+                fullWidth
+              />
+            </div>
+            <div>
+              <Typography
+                variant="subtitle1"
+                color="initial"
+                style={{ margin: "15px", textAlign: "center" }}
+              >
+                If you are a new user please select any other login option from
+                previous page
+              </Typography>
+              <RegisterDailog email={email} clickEvent={registerEvent} />
+            </div>
+            <div>
+              <Typography
+                variant="subtitle2"
+                color="initial"
+                style={{ margin: "15px", textAlign: "center" }}
+              >
+                We won't reveal your email to anyone else nor use it to send you
+                spam
+              </Typography>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 
@@ -241,7 +335,7 @@ const Login = ({ children }) => {
               <Button
                 variant="outlined"
                 size="small"
-                onClick={() => setRegister(false)}
+                onClick={() => handleBack()}
               >
                 <KeyboardBackspaceIcon />
               </Button>
@@ -256,4 +350,15 @@ const Login = ({ children }) => {
   );
 };
 
-export default Login;
+const mapStateToProps = ({ userReducer }) => {
+  return {
+    loginStatus: userReducer.loginResponse,
+    loginError: userReducer.errorMessage,
+  };
+};
+
+const mapDispatchToProps = {
+  loginUser: (body) => UserAction.loginAction(body),
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

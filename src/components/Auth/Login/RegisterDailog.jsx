@@ -53,13 +53,14 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function RegisterDailog({ email }) {
+export default function RegisterDailog(props) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
+    props.clickEvent(true);
     setOpen(false);
   };
 
@@ -70,7 +71,7 @@ export default function RegisterDailog({ email }) {
         color="primary"
         fullWidth
         style={{ padding: "15px 0", fontSize: "16px" }}
-        disabled={!email}
+        disabled={!props.email}
         onClick={handleClickOpen}
       >
         Next

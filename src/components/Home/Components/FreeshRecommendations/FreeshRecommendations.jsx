@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import AdsCard from "../../../../common/AdsCard";
 import "./FreeshRecommendations.scss";
-import { getAds } from "../../../../redux/reducers/ads";
+import { getAds } from "../../../../redux/actions";
 import { useEffect } from "react";
 import { showImage, getHourMinuteSeconds } from "../../../../utils/index";
 

@@ -6,7 +6,7 @@ import AdsCard from "../../../../common/AdsCard";
 import motorcycleData from "./Motorcycles";
 import "./MoreOnMotorcycles.scss";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { getAds } from "../../../../redux/reducers/ads";
+import { getAds } from "../../../../redux/actions";
 import { useEffect } from "react";
 // import { getAds } from "../../../../redux/actions/adsAction";
 import axios from "axios";

@@ -10,11 +10,13 @@ import {
   Button,
 } from "@material-ui/core";
 import { useState } from "react";
+import { connect } from "react-redux";
 import ImageUploder from "../../common/ImageUploder";
+import { AdAction } from "../../redux/actions";
 import Layout from "../Layout";
 import "./CreateAds.scss";
 
-const CreateAds = () => {
+const CreateAds = (props) => {
   const [data, setData] = useState({
     image: [],
   });
@@ -24,17 +26,18 @@ const CreateAds = () => {
   };
 
   const onClickSubmit = () => {
-    //  const formData = new FormData();
-    //  formData.append("title", data.title);
-    //  formData.append("details", data.details);
-    //  formData.append("price", data.price);
-    //  formData.append("image", data.image);
-    //  if (data.project_media.length > 0) {
-    //    data.project_media.forEach((media, index) =>
-    //      formData.append(`project_media[${index}]`, media)
-    //    );
-    //  }
-    //  reducerFunctionHere(formData);
+    // const formData = new FormData();
+    // formData.append("title", data.title);
+    // formData.append("details", data.details);
+    // formData.append("price", data.price);
+    // formData.append("image", data.image);
+    // if (data.project_media.length > 0) {
+    //   data.project_media.forEach((media, index) =>
+    //     formData.append(`project_media[${index}]`, media)
+    //   );
+    // }
+    // console.log(formData, "llllll", data);
+    // props.addAd(formData);
   };
   const onChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -51,7 +54,6 @@ const CreateAds = () => {
     { id: 8, title: "home" },
   ];
 
-  console.log(data);
   return (
     <Layout hindMenu>
       <div className="create_ads_content">
@@ -203,7 +205,11 @@ const CreateAds = () => {
               </div>
 
               <div>
-                <Button variant="contained" color="primary">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => onClickSubmit()}
+                >
                   Create Ad
                 </Button>
               </div>
@@ -215,7 +221,15 @@ const CreateAds = () => {
   );
 };
 
-export default CreateAds;
+const mapStateToProps = ({ ads }) => {
+  return { createdStatus: ads.addStatus };
+};
+
+const mapDispatchToProps = {
+  addAd: (body) => AdAction.addAction(body),
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateAds);
 
 // curl --location --request POST 'http://localhost:8000/ads/create' \
 // --data-raw '{

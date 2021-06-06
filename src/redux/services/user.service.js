@@ -1,10 +1,12 @@
 import Axios from "axios";
-import { commonUrl } from "./common-util";
+import { commonUrl,header } from "./common-util";
+
 const loginService = (body) => {
   return new Promise((resolve, rej) => {
     Axios.post(commonUrl + "/login", body)
       .then((res) => {
         saveToken(res.data.token);
+        header.Authorization= "Bearer " + res.data.token
         resolve(true);
       })
       .catch((e) => {

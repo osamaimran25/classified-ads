@@ -17,7 +17,7 @@ import ImageUploder from "../../common/ImageUploder";
 import { AdAction, UserAction } from "../../redux/actions";
 import Layout from "../Layout";
 import "./AdsCreate.scss";
-
+import CSRFToken from './csrf-token';
 const locations = [
   { id: 1, title: "location 1" },
   { id: 2, title: "location 2" },
@@ -45,7 +45,6 @@ const AdsCreate = (props) => {
       setCatObject();
     } else if (props.categories) {
       setCategory(props.categories);
-      console.log(category);
     } else {
       props.getUserDetail();
       props.getCategory();
@@ -70,6 +69,7 @@ const AdsCreate = (props) => {
   };
 
   const Files = (files) => {
+    console.log(files)
     setData({ ...data, image: files });
   };
 
@@ -211,7 +211,9 @@ const AdsCreate = (props) => {
             Post an ad
           </Typography>
           {/* category option here */}
-          <Grid container item spacing={2}>
+        <form action="/endpoint" method="post">
+        <CSRFToken />
+        <Grid container item spacing={2}>
             <Card style={{ width: "100%" }}>
               <CardContent style={{ background: "#2f3a51" }}>
                 <Typography
@@ -574,6 +576,7 @@ const AdsCreate = (props) => {
               </div>
             </>
           )}
+        </form>
         </Container>
       </div>
     </Layout>

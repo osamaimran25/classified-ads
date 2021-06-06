@@ -1,25 +1,30 @@
 import Axios from "axios";
-import Cookies from "js-cookie";
 import { commonUrl, header } from "./common-util";
 const createService = (body) => {
   const imageArray = body.image;
   let formData = new FormData();
   imageArray.forEach((el, i) => {
-    const file = new Blob([el], {
-      type: el.type,
-    });
-    formData.append(`image_0${i + 1}`, null);
+    formData.append(`image_0${i + 1}`, el);
   });
   body.items = Object.values(body.items);
   delete body.image;
   for (const [key, value] of Object.entries(body)) {
-    formData.append(key, key === "items" ? JSON.stringify(value) : value);
+    if(key==='items'){
+      const valueItem = value?.map((el)=>{
+        el.value = el.value?el.value:''
+        return el
+      })
+      formData.append(key,JSON.stringify(valueItem))
+    }
+   else{
+    formData.append(key, value);
+   }
   }
   return new Promise((resolve, rej) => {
-    Axios.defaults.xsrfHeaderName = "X-CSRFToken";
-    Axios.post(commonUrl + "/myads", formData, { headers: header })
+    Axios.defaults.xsrfCookieName = 'csrftoken'
+    Axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+    Axios.post(commonUrl + "/myads/", formData, { headers: header })
       .then((res) => {
-        console.log(res);
         if (res) {
           resolve(res);
         }
@@ -27,6 +32,8 @@ const createService = (body) => {
       .catch((err) => rej(err));
   });
 };
+
+
 
 const getCategory = () => {
   return new Promise((resolve, reject) => {
@@ -36,7 +43,7 @@ const getCategory = () => {
       .then((res) => {
         console.log(res);
         if (res) {
-          resolve(res.data);
+          resolve(res.data.slice(0,10));
         }
       })
       .catch((err) => reject(err));
@@ -61,3 +68,4 @@ export const AdService = {
   getCategory: () => getCategory(),
   getCategoryField: (catId) => getCategoryField(catId),
 };
+

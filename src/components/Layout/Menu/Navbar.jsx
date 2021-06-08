@@ -8,7 +8,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@material-ui/core";
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import AddIcon from "@material-ui/icons/Add";
 // import "./Navbar.css";
@@ -102,6 +102,11 @@ const drawarMenu = (
 const Navbar = () => {
   const classes = useStyles();
 
+  const [data,setData] =useState({
+    location:'',
+    search:''
+  })
+
   useEffect(() => {
     const hamburger = document.querySelector(".hamburger");
     const navLinks = document.querySelector(".nav-links");
@@ -141,6 +146,14 @@ const Navbar = () => {
       }
     });
   }, []);
+
+  const onChangeEvent=(e)=>{
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+    console.log(data)
+  }
   return (
     <div style={{ backgroundColor: "white" }}>
       <div className="topNavContainer">
@@ -196,9 +209,28 @@ const Navbar = () => {
                     <LocationOnIcon color="primary" />
                   </div>
                 </div> */}
+                  <div className={classes.search}>
+                  <InputBase
+                    placeholder="Location…"
+                    value={data.location}
+                    name="location"
+                    onChange={onChangeEvent}
+                    classes={{
+                      root: classes.inputRoot,
+                      input: classes.inputInput,
+                    }}
+                    inputProps={{ "aria-label": "location" }}
+                  />
+                  <div className={classes.searchIcon}>
+                    <LocationOnIcon color="primary"/>
+                  </div>
+                </div>
                 <div className={classes.search}>
                   <InputBase
+                    name="search"
+                    onChange={onChangeEvent}
                     placeholder="Search…"
+                    value={data.search}
                     classes={{
                       root: classes.inputRoot,
                       input: classes.inputInput,

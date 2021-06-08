@@ -5,7 +5,9 @@ const initialState = {
   error: {},
   addStatus: false,
   categories: null,
+  subCategory: null,
   categoriesField: null,
+  location: [],
 };
 
 export default function adsReducer(state = initialState, action = {}) {
@@ -44,6 +46,18 @@ export default function adsReducer(state = initialState, action = {}) {
       return {
         ...state,
         categoriesField: action.payload,
+        loading: true,
+      };
+    case "AD_LOCATION":
+      return {
+        ...state,
+        location: action.payload,
+        loading: true,
+      };
+    case "AD_SUB_CATEGORY":
+      return {
+        ...state,
+        subCategory: action.payload,
         loading: true,
       };
     default:

@@ -1,5 +1,6 @@
 import Axios from "axios";
 import { commonUrl, header } from "./common-util";
+
 const createService = (body) => {
   const imageArray = body.image;
   let formData = new FormData();
@@ -9,20 +10,19 @@ const createService = (body) => {
   body.items = Object.values(body.items);
   delete body.image;
   for (const [key, value] of Object.entries(body)) {
-    if(key==='items'){
-      const valueItem = value?.map((el)=>{
-        el.value = el.value?el.value:''
-        return el
-      })
-      formData.append(key,JSON.stringify(valueItem))
+    if (key === "items") {
+      const valueItem = value?.map((el) => {
+        el.value = el.value ? el.value : "";
+        return el;
+      });
+      formData.append(key, JSON.stringify(valueItem));
+    } else {
+      formData.append(key, value);
     }
-   else{
-    formData.append(key, value);
-   }
   }
   return new Promise((resolve, rej) => {
-    Axios.defaults.xsrfCookieName = 'csrftoken'
-    Axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+    Axios.defaults.xsrfCookieName = "csrftoken";
+    Axios.defaults.xsrfHeaderName = "X-CSRFToken";
     Axios.post(commonUrl + "/myads/", formData, { headers: header })
       .then((res) => {
         if (res) {
@@ -33,17 +33,28 @@ const createService = (body) => {
   });
 };
 
-
-
 const getCategory = () => {
   return new Promise((resolve, reject) => {
     Axios.get(commonUrl + "/category/", {
       headers: header,
     })
       .then((res) => {
-        console.log(res);
         if (res) {
-          resolve(res.data.slice(0,10));
+          resolve(res.data);
+        }
+      })
+      .catch((err) => reject(err));
+  });
+};
+
+const getSubCategory = (id) => {
+  return new Promise((resolve, reject) => {
+    Axios.get(commonUrl + `/category/${id}/subcategory/`, {
+      headers: header,
+    })
+      .then((res) => {
+        if (res) {
+          resolve(res.data);
         }
       })
       .catch((err) => reject(err));
@@ -63,9 +74,22 @@ const getCategoryField = (catId) => {
   });
 };
 
+const getLocation = (text) => {
+  return new Promise((resolve, reject) => {
+    Axios.get(commonUrl + "/locations/search/" + text + "/")
+      .then((res) => {
+        if (res) {
+          resolve(res.data);
+        }
+      })
+      .catch((e) => reject(e));
+  });
+};
+
 export const AdService = {
   createApi: (body) => createService(body),
   getCategory: () => getCategory(),
   getCategoryField: (catId) => getCategoryField(catId),
+  getLocation: (text) => getLocation(text),
+  getSubCategory: (id) => getSubCategory(id),
 };
-

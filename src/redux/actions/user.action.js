@@ -49,9 +49,19 @@ const getUserDetail = () => (dispatch) => {
   });
 };
 
+const checkLogin = () => (dispatch) => {
+  const token = localStorage.getItem("islamic-token");
+  console.log(token ? true : false);
+  dispatch({
+    type: "USER_LOGIN",
+    payload: token ? true : false,
+  });
+};
+
 export const UserAction = {
   loginAction: (body) => loginUser(body),
   registerAction: (body) => registerUser(body),
   getTokenStatus: () => getTokenStatus(),
   getUserDetail: () => getUserDetail(),
+  checkLogin,
 };

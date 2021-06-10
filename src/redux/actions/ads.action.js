@@ -66,21 +66,21 @@ const getCategoryField = (catId) => (dispatch) => {
     });
 };
 
-const getSubCategory=(id)=>(dispatch)=>{
+const getSubCategory = (id) => (dispatch) => {
   AdService.getSubCategory(id)
-  .then((data) => {
-    dispatch({
-      type: "AD_SUB_CATEGORY",
-      payload: data,
+    .then((data) => {
+      dispatch({
+        type: "AD_SUB_CATEGORY",
+        payload: data,
+      });
+    })
+    .catch((e) => {
+      dispatch({
+        type: "ADS_LOAD_ERROR",
+        payload: e,
+      });
     });
-  })
-  .catch((e) => {
-    dispatch({
-      type: "ADS_LOAD_ERROR",
-      payload: e,
-    });
-  });
-}
+};
 
 const getLocation = (text) => (dispatch) => {
   AdService.getLocation(text)
@@ -105,11 +105,12 @@ const emptyCategoryStatus = (body) => (dispatch) => {
   });
 };
 
+
 export const AdAction = {
   addAds,
   getCategory,
   getCategoryField,
   getLocation,
   emptyCategoryStatus,
-  getSubCategory
+  getSubCategory,
 };

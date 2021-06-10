@@ -73,7 +73,10 @@ const Login = (props) => {
     if (props.loginStatus) {
       handleClose();
     }
-  }, [props.loginStatus]);
+    if(!props.showLogin){
+      handleClickOpen()
+    }
+  }, [props.loginStatus,props.showLogin]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -354,6 +357,7 @@ const mapStateToProps = ({ userReducer }) => {
   return {
     loginStatus: userReducer.loginResponse,
     loginError: userReducer.errorMessage,
+    showLogin:userReducer.loginStatus
   };
 };
 

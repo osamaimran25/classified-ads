@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import ImageUploder from "../../common/ImageUploder";
 import { AdAction, UserAction } from "../../redux/actions";
+import Login from "../Auth/Login/Login";
 import Layout from "../Layout";
 import "./AdsCreate.scss";
 import CSRFToken from "./csrf-token";
@@ -49,7 +50,7 @@ const AdsCreate = (props) => {
     if(props.location){
       setLocation({...locationField,locations:props.location})
     }
-    if (props.createdStatus) {
+    if (props.createdStatus ||!props.showLogin) {
       props.history.push("/");
       props.emptyCategoryStatus()
     } else if (props.categoriesField) {
@@ -60,7 +61,8 @@ const AdsCreate = (props) => {
       props.getUserDetail();
       props.getCategory();
     }
-  }, [props.categoriesField, props.categories, props.createdStatus,props.location]);
+    props.checkLogin()
+  }, [props.categoriesField, props.categories, props.createdStatus,props.location,props.showLogin]);
 
   const setCatObject = async () => {
     let mapData = {};
@@ -219,7 +221,7 @@ const AdsCreate = (props) => {
   };
 
   return (
-    <Layout hindMenu>
+     <Layout hindMenu>
       <div className="ads_create_wrapper">
         <Container>
           <Typography
@@ -619,11 +621,10 @@ const AdsCreate = (props) => {
         </Container>
       </div>
     </Layout>
-  );
+ );
 };
 
 const mapStateToProps = ({ ads, userReducer }) => {
-  console.log(ads);
   return {
     createdStatus: ads.addStatus,
     userInfo: userReducer.userInfo,
@@ -631,6 +632,7 @@ const mapStateToProps = ({ ads, userReducer }) => {
     subCategory:ads.subCategory,
     categoriesField: ads.categoriesField,
     location: ads.location,
+    showLogin:userReducer.loginStatus
   };
 };
 
@@ -641,7 +643,8 @@ const mapDispatchToProps = {
   getCategoryField: (id) => AdAction.getCategoryField(id),
   getLocation: (text) => AdAction.getLocation(text),
   emptyCategoryStatus:()=>AdAction.emptyCategoryStatus(),
-  getSubCategory:(id)=> AdAction.getSubCategory(id)
+  getSubCategory:(id)=> AdAction.getSubCategory(id),
+  checkLogin:()=> UserAction.checkLogin()
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdsCreate);
